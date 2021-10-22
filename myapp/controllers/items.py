@@ -22,7 +22,7 @@ class Items(Controller):
         from .services import addIndex
 
         query = addIndex()
-        es.index(index="test-my-index", doc_type="my-test-type", id=1, document=query)
+        es.index(index="test-my-index", doc_type="my-test-type", id=1, body=query)
         print("Index is created.")
 
     @ex(help="update an existing item")
@@ -30,7 +30,7 @@ class Items(Controller):
         from .services import updateIndex
 
         query = updateIndex()
-        es.update(index="test-my-index", doc_type="my-test-type", id=1, document=query)
+        es.update(index="test-my-index", doc_type="my-test-type", id=1, body={"doc":query})
         print("Index is updated")
 
     @ex(help="delete an item")
